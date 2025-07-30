@@ -324,12 +324,6 @@ export default function AddProduct() {
         </tbody>
       </table>
 
-      <div className="flex justify-center items-center gap-4 mt-4">
-        <button onClick={() => setPage(prev => Math.max(prev - 1, 1))} disabled={page===1} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">❮</button>
-        <span>{page} / {totalPages}</span>
-        <button onClick={() => setPage(prev => Math.min(prev + 1, totalPages))} disabled={page===totalPages} className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">❯</button>
-      </div>
-
       {deletePopup && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
@@ -392,6 +386,24 @@ export default function AddProduct() {
           </div>
         </div>
       )}
+
+      <div className="fixed bottom-0 left-0 w-full bg-white py-3 shadow-inner flex justify-center items-center gap-4 z-40">
+  <button
+    onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+    disabled={page === 1}
+    className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+  >
+    Prev
+  </button>
+  <span>{page} / {totalPages}</span>
+  <button
+    onClick={() => setPage(prev => Math.min(prev + 1, totalPages))}
+    disabled={page === totalPages}
+    className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+  >
+    Next
+  </button>
+</div>
     </>
   );
 }
